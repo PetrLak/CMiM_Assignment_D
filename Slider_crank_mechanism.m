@@ -10,7 +10,10 @@ J = @(x) [-b*sin(x(1)), -1;...
 init_est = [0.5; 0.3];
 tol = 1e-12;
 
-[x, n] = NR_method(F, J, init_est, tol)
+[x, n] = NR_method(F, J, init_est, tol);
 
-theta_diff = (a*cos(fi_r)*fi_r_diff)/(0.2*cos(x(1)))
-d_diff = -a*sin(fi_r)*fi_r_diff-b*sin(x(1))*theta_diff
+theta_diff = (a*cos(fi_r)*fi_r_diff)/(0.2*cos(x(1)));
+d_diff = -a*sin(fi_r)*fi_r_diff-b*sin(x(1))*theta_diff;
+
+fprintf('theta = %.5g° (%.5g rad), d = %.5g m\n', 180*x(1)/pi, x(1), x(2))
+fprintf('theta_velocity = %.5g rad/s, d_velocity = %.5g m/s\n', theta_diff, d_diff)
