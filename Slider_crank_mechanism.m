@@ -31,19 +31,32 @@ while t_init <= t_end
           ii = ii + 1; 
 end
 
+subplot(2,1,1)
 hold on
 plot(t_plot,x(1,:),'r-', 'LineWidth', 1.4)
 plot(t_plot,x(2,:),'b-', 'LineWidth', 1.4)
+title('$Position$','interpreter','latex')
+xlabel('$t$','interpreter','latex')
+ylabel('$\theta [rad/s], d [m/s]$','interpreter','latex')
+legend('$\theta$','$d$','interpreter','latex')
+set(gca,'TickLabelInterpreter','latex')
+grid on
+hold off
 
 fi_r_vec = pi/6+omega*t_plot;
 
 theta_diff = (a*cos(fi_r_vec)*fi_r_diff)./(0.2*cos(x(1,:)));
 d_diff = -a*sin(fi_r_vec)*fi_r_diff-b*sin(x(1,:)).*theta_diff;
 
-plot(t_plot,theta_diff,'c-', 'LineWidth', 1.4)
-plot(t_plot,d_diff,'g-', 'LineWidth', 1.4)
-title('Position and Velocity')
-xlabel('t')
-ylabel('\theta [rad], d [m],\theta velocity [rad/s], d velocity [m/s]')
-legend('\theta position','d position','\theta velocity', 'd velocity')
+subplot(2,1,2)
+hold on
+plot(t_plot,theta_diff,'r-', 'LineWidth', 1.4)
+plot(t_plot,d_diff,'b-', 'LineWidth', 1.4)
+title('$Velocity$','interpreter','latex')
+xlabel('$t$','interpreter','latex')
+ylabel('$\dot{\theta} [rad/s], \dot{d} [m/s]$','interpreter','latex')
+legend('$\dot{\theta}$', '$\dot{d}$','interpreter','latex');
+set(gca,'TickLabelInterpreter','latex')
+grid on
 hold off
+
